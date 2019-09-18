@@ -169,7 +169,7 @@ class Prom(Measure):
         self.t_sleep = warmup + duration
         self.debug('Sleeping for %d seconds (%d warmup + %d duration)'%(
             self.t_sleep, warmup, duration))
-        # time.sleep(self.t_sleep)
+        time.sleep(self.t_sleep)
 
         metrics = gather_metrics(in_metrics, start, start + duration)
         annotations = {
