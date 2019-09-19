@@ -173,7 +173,7 @@ class Prom(Measure):
 
         metrics = gather_metrics(in_metrics, start, start + duration)
         annotations = {
-            'prometheus_base_url': base_url,
+            # 'prometheus_base_url': base_url,
         }
 
         return (metrics, annotations)
