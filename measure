@@ -164,9 +164,11 @@ class Prom(Measure):
         except:
             raise Exception('Control configuration is missing "duration"')
 
+        delay = int(self.input_data['control'].get('delay', 0))
+
         start = time.time() + warmup
         # sleep
-        self.t_sleep = warmup + duration
+        self.t_sleep = warmup + duration + delay
         self.debug('Sleeping for %d seconds (%d warmup + %d duration)'%(
             self.t_sleep, warmup, duration))
         time.sleep(self.t_sleep)
