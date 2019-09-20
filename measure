@@ -219,7 +219,8 @@ class Prom(Measure):
         insts = []
         for i in data['data']['result']:
             metric = i['metric'].copy()
-            del metric['__name__']
+            if '__name__' in metric:
+                del metric['__name__']
             id = '   '.join(map(lambda m: ':'.join(m), sorted(metric.items(), key=lambda m: m[0])))
             values = map(lambda v: (v[0], float(v[1]) if '.' in v[1] else int(v[1])), i['values'])
             insts.append(dict(id=id, data=list(values)))
